@@ -1,0 +1,44 @@
+server:
+    port: 8001
+spring:
+    application:
+        name: microservice-platform-rabbit
+    rabbitmq:
+        addresses: 127.0.0.1
+        username: guest
+        password: guest
+        port: 5672
+        publisher-confirms: true
+        publisher-returns: true
+        template:
+            mandatory: true
+        listener:
+            simple:
+                acknowledge-mode: manual
+                retry:
+                    enabled: true #是否开启重试
+                    initial-interval: 3000ms #重试时间间隔
+                    max-attempts: 3 #重试次数
+                    max-interval: 15000ms #重试最大时间间隔
+                    multiplier: 2 #倍数
+                default-requeue-rejected: true
+
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password:
+      jedis:
+        pool:
+          max-active: 100
+          max-idle: 10
+          max-wait: -1
+      timeout: 1000
+
+logging:
+    level:
+        root: INFO
+        org.hibernate: INFO
+        org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+        org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+        com.rich.example: DEBUG
+
