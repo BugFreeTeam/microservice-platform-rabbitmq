@@ -72,6 +72,12 @@
             <version>2.0.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+
         <!-- druid数据源依赖 -->
         <dependency>
             <groupId>com.alibaba</groupId>
